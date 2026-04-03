@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#6366f1",
-        secondary: "#8b5cf6",
-        dark: "#0f172a",
-        darker: "#020617",
+        primary: "#818cf8", // Soft indigo
+        secondary: "#f472b6", // Soft pink
+        dark: "#f8fafc", // Very light pastel BG
+        darker: "#f1f5f9", // Slightly darker pastel for sections
       }
     },
   },

@@ -28,87 +28,87 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#fdf2f8] via-[#f5f3ff] to-[#f0f9ff] flex flex-col items-center justify-center p-4">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-rose-200/40 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-violet-200/40 rounded-full blur-3xl animate-pulse"></div>
       </div>
 
-      <div className="glass-panel max-w-md w-full p-8 relative z-10 animate-in fade-in zoom-in duration-500">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-indigo-500/30 mb-4">
-            <span className="text-3xl">🚀</span>
+      <div className="glass-panel max-w-md w-full p-10 relative z-10 animate-in fade-in zoom-in duration-700 border border-white shadow-2xl shadow-purple-100/50">
+        <div className="text-center mb-10">
+          <div className="w-24 h-24 bg-gradient-to-tr from-violet-400 to-rose-400 rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-purple-200 mb-8 rotate-6 hover:rotate-0 transition-transform duration-500 transform scale-110">
+            <span className="text-5xl">🚀</span>
           </div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">
+          <h1 className="text-4xl font-black text-slate-800 tracking-tight mb-3 uppercase">
             {isRegistering ? 'Create Account' : 'Welcome Back'}
           </h1>
-          <p className="text-slate-400 mt-2">
+          <p className="text-slate-500 font-black italic uppercase tracking-tighter opacity-80">
             {isRegistering ? 'Join CoursePilot to start your journey' : 'Sign in to continue your career journey'}
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {isRegistering && (
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Full Name</label>
+              <label className="block text-xs font-black text-slate-400 mb-2 ml-1 uppercase tracking-widest">Full Name</label>
               <input 
                 type="text" 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="John Doe" 
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                className="input-field" 
                 required={isRegistering}
               />
             </div>
           )}
           
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
+            <label className="block text-xs font-black text-slate-400 mb-2 ml-1 uppercase tracking-widest">Email Address</label>
             <input 
               type="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com" 
-              className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"  
+              className="input-field"  
               required 
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Phone Number</label>
+            <label className="block text-xs font-black text-slate-400 mb-2 ml-1 uppercase tracking-widest">Phone Number</label>
             <input 
               type="tel" 
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="+1 (555) 000-0000" 
-              className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+              className="input-field" 
               required 
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Password</label>
+            <label className="block text-xs font-black text-slate-400 mb-2 ml-1 uppercase tracking-widest">Security Access</label>
             <input 
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••" 
-              className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"  
+              className="input-field"  
               required 
             />
           </div>
 
-          <button type="submit" className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold w-full py-3 mt-4 rounded-xl transition-colors text-lg">
-            {isRegistering ? 'Sign Up & Continue' : 'Sign In'}
+          <button type="submit" className="bg-gradient-to-r from-violet-600 to-rose-500 hover:from-violet-500 hover:to-rose-400 text-white font-black w-full py-5 mt-6 rounded-[2rem] transition-all text-xl shadow-2xl shadow-purple-200 active:scale-[0.98] border-b-8 border-black/10 uppercase tracking-widest">
+            {isRegistering ? 'Sign Up Now' : 'Sign In'}
           </button>
         </form>
 
-        <div className="mt-6 text-center text-slate-400 text-sm">
+        <div className="mt-10 text-center text-slate-400 font-bold text-sm">
           {isRegistering ? 'Already have an account?' : "Don't have an account?"}
           <button 
             type="button"
             onClick={() => setIsRegistering(!isRegistering)} 
-            className="text-indigo-400 hover:text-indigo-300 font-medium ml-1"
+            className="text-rose-500 hover:text-rose-400 font-black ml-2 underline underline-offset-8 decoration-2 uppercase tracking-widest text-xs"
           >
             {isRegistering ? 'Sign in' : 'Sign up'}
           </button>

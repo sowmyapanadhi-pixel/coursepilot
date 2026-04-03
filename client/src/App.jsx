@@ -14,6 +14,8 @@ import Resume from './pages/Resume';
 import Jobs from './pages/Jobs';
 import Profile from './pages/Profile';
 import Notifications from './pages/Notifications';
+import Community from './pages/Community';
+import CommunityDetail from './pages/CommunityDetail';
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
 
             <Route path="/careers" element={<Careers />} />
             <Route path="/learning" element={<Learning />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/community/:groupId" element={<CommunityDetail />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/profile" element={<Profile />} />

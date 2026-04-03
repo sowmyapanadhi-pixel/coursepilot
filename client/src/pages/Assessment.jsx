@@ -70,69 +70,75 @@ const Assessment = () => {
 
   return (
     <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <h1 className="text-3xl font-bold text-white mb-2">Skill Assessment</h1>
-      <p className="text-slate-400 mb-8">Evaluate your technical skills to uncover your specific strengths.</p>
+      <h1 className="text-4xl font-black text-slate-800 mb-2">Skill Assessment</h1>
+      <p className="text-slate-500 font-bold mb-8 italic text-lg">Evaluate your technical skills to uncover your specific strengths.</p>
 
       {!started ? (
-        <div className="glass-panel p-10 text-center flex flex-col items-center">
-          <div className="w-20 h-20 bg-indigo-500/20 rounded-full flex items-center justify-center mb-6">
-            <BrainCircuit size={40} className="text-indigo-400" />
+        <div className="glass-panel p-12 text-center flex flex-col items-center bg-white border-white shadow-2xl shadow-indigo-50">
+          <div className="w-24 h-24 bg-indigo-50 rounded-3xl flex items-center justify-center mb-8 shadow-inner">
+            <BrainCircuit size={48} className="text-indigo-600" />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-4">Quiz Generated from Your Skills</h2>
-          <p className="text-slate-400 max-w-lg mb-8 text-lg">
-            We've generated {questions.length} questions based on your stated skills: <span className="text-indigo-400 font-medium">{userData.skills.join(', ') || 'General Knowledge'}</span>.
+          <h2 className="text-3xl font-black text-slate-800 mb-6 uppercase tracking-tight">Quiz Generated from Your Skills</h2>
+          <p className="text-slate-500 max-w-lg mb-10 text-xl font-medium leading-relaxed">
+            We've generated {questions.length} questions based on your stated skills: <span className="text-indigo-600 font-black italic">{userData.skills?.join(', ') || 'General Knowledge'}</span>.
           </p>
           <button 
             onClick={() => setStarted(true)}
-            className="btn-primary text-lg px-8 py-3 flex items-center gap-2"
+            className="bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xl px-12 py-5 rounded-2xl shadow-xl shadow-indigo-100 transition-all flex items-center gap-3 active:scale-95"
           >
             <span>Start Assessment</span>
-            <Target size={20} />
+            <Target size={24} />
           </button>
         </div>
       ) : (
-        <div className="glass-panel p-10">
-          <div className="flex justify-between items-center mb-8">
-            <span className="text-indigo-400 font-medium tracking-wide uppercase text-sm">Question {currentQIndex + 1} of {questions.length}</span>
+        <div className="glass-panel p-12 bg-white border-white shadow-2xl shadow-indigo-50">
+          <div className="flex justify-between items-center mb-10">
+            <span className="text-indigo-600 font-black tracking-[0.2em] uppercase text-xs">Question {currentQIndex + 1} of {questions.length}</span>
+            <div className="h-2 w-32 bg-slate-100 rounded-full overflow-hidden">
+               <div className="h-full bg-indigo-500 transition-all" style={{ width: `${((currentQIndex + 1) / questions.length) * 100}%` }}></div>
+            </div>
           </div>
           
-          <h2 className="text-2xl text-white font-medium mb-8">
+          <h2 className="text-3xl text-slate-800 font-black mb-10 leading-tight">
             {questions[currentQIndex]?.q}
           </h2>
           
-          <div className="space-y-4 mb-8">
+          <div className="space-y-5 mb-10 text-left">
             {questions[currentQIndex]?.opts.map((option, i) => (
               <label 
                 key={i} 
-                className={`flex items-center p-4 border rounded-xl cursor-pointer transition-all ${
+                className={`flex items-center p-5 border-2 rounded-2xl cursor-pointer transition-all ${
                   selectedOption === i 
-                    ? 'border-indigo-500 bg-indigo-500/10' 
-                    : 'border-slate-700 hover:bg-slate-800/50 hover:border-slate-500'
+                    ? 'border-indigo-500 bg-indigo-50 shadow-lg shadow-indigo-50' 
+                    : 'border-slate-100 hover:bg-slate-50 hover:border-slate-200'
                 }`}
               >
+                <div className={`w-6 h-6 rounded-full border-2 mr-6 flex items-center justify-center transition-all ${selectedOption === i ? 'bg-indigo-600 border-indigo-600' : 'bg-white border-slate-200'}`}>
+                  {selectedOption === i && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                </div>
                 <input 
                   type="radio" 
                   name="answer"
                   checked={selectedOption === i}
                   onChange={() => setSelectedOption(i)} 
-                  className="mr-4 accent-indigo-500 w-5 h-5 bg-slate-900 border-slate-700" 
+                  className="hidden" 
                 />
-                <span className="text-slate-300 text-lg">{option}</span>
+                <span className={`text-xl font-bold ${selectedOption === i ? 'text-indigo-900' : 'text-slate-600'}`}>{option}</span>
               </label>
             ))}
           </div>
 
-          <div className="flex justify-between items-center pt-6 border-t border-slate-800">
-            <button className="text-slate-400 hover:text-white transition-colors" onClick={() => navigate('/dashboard')}>
+          <div className="flex justify-between items-center pt-8 border-t-2 border-slate-50">
+            <button className="text-slate-400 hover:text-rose-500 transition-colors font-black uppercase tracking-widest text-sm" onClick={() => navigate('/dashboard')}>
               Quit Assessment
             </button>
             <button 
               onClick={handleNext}
               disabled={selectedOption === null}
-              className="btn-primary flex items-center gap-2"
+              className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-black px-10 py-4 rounded-xl shadow-xl shadow-indigo-100 transition-all flex items-center gap-3 active:scale-95 text-lg"
             >
               <span>{currentQIndex === questions.length - 1 ? 'Finish & See Careers' : 'Next Question'}</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={20} />
             </button>
           </div>
         </div>

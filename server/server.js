@@ -13,6 +13,7 @@ const jobRoutes = require('./routes/jobRoutes');
 const progressRoutes = require('./routes/progressRoutes');
 const chatbotRoutes = require('./routes/chatbotRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/chatbot', chatbotRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

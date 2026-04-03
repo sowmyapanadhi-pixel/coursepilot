@@ -23,80 +23,83 @@ const Dashboard = () => {
   const learningProgress = Math.round((completedCoursesCount / roadmap.length) * 100) || 0;
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="flex justify-between items-end">
+    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 pb-16">
+      <div className="flex justify-between items-end mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">My Overview</h1>
-          <p className="text-slate-400">Track your learning and career progression.</p>
+          <h1 className="text-5xl font-black text-slate-800 mb-3 tracking-tighter uppercase italic">My Dashboard</h1>
+          <p className="text-slate-400 font-bold text-xl uppercase tracking-tighter">
+            Tracking your progress at <span className="text-violet-600 underline decoration-violet-100 underline-offset-8 decoration-8">{userData.institution || 'University'}</span>.
+          </p>
         </div>
-
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-        <div onClick={() => navigate('/careers')} className="glass-panel p-6 border-t-4 border-t-indigo-500 cursor-pointer hover:-translate-y-1 hover:shadow-xl transition-all">
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-slate-400 font-medium">Selected Path</h3>
-            <span className="p-2 bg-indigo-500/20 text-indigo-400 rounded-lg"><Briefcase size={20} /></span>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative">
+        <div onClick={() => navigate('/careers')} className="glass-panel p-8 border-t-8 border-t-violet-400 cursor-pointer hover:-translate-y-4 hover:shadow-2xl hover:shadow-purple-100 transition-all bg-white border-white rounded-[2rem] shadow-xl shadow-slate-100/50 group">
+          <div className="flex justify-between items-start mb-8">
+            <h3 className="text-slate-400 font-black uppercase tracking-[0.2em] text-[10px]">Career Goal</h3>
+            <span className="p-4 bg-violet-50 text-violet-600 rounded-2xl shadow-inner group-hover:rotate-12 transition-transform"><Briefcase size={32} /></span>
           </div>
-          <div className="text-2xl font-bold text-white truncate">{selectedPath}</div>
+          <div className="text-2xl font-black text-slate-800 truncate tracking-tight uppercase">{selectedPath}</div>
         </div>
         
-        <div className="glass-panel p-6 border-t-4 border-t-cyan-500">
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-slate-400 font-medium">Skill Level</h3>
-            <span className="p-2 bg-cyan-500/20 text-cyan-400 rounded-lg"><TrendingUp size={20} /></span>
+        <div className="glass-panel p-8 border-t-8 border-t-emerald-400 bg-white border-white shadow-xl shadow-slate-100/50 rounded-[2rem] group">
+          <div className="flex justify-between items-start mb-8">
+            <h3 className="text-slate-400 font-black uppercase tracking-[0.2em] text-[10px]">Skill Level</h3>
+            <span className="p-4 bg-emerald-50 text-emerald-600 rounded-2xl shadow-inner group-hover:-rotate-12 transition-transform"><TrendingUp size={32} /></span>
           </div>
-          <div className="text-2xl font-bold text-white">{skillLevel}</div>
+          <div className="text-2xl font-black text-slate-800 tracking-tight uppercase">{skillLevel} Status</div>
         </div>
 
-        <div onClick={() => navigate('/learning')} className="glass-panel p-6 border-t-4 border-t-purple-500 cursor-pointer hover:-translate-y-1 hover:shadow-xl transition-all">
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-slate-400 font-medium">Courses Active</h3>
-            <span className="p-2 bg-purple-500/20 text-purple-400 rounded-lg"><BookOpen size={20} /></span>
+        <div onClick={() => navigate('/learning')} className="glass-panel p-8 border-t-8 border-t-rose-400 cursor-pointer hover:-translate-y-4 hover:shadow-2xl hover:shadow-rose-100 transition-all bg-white border-white rounded-[2rem] shadow-xl shadow-slate-100/50 group">
+          <div className="flex justify-between items-start mb-8">
+            <h3 className="text-slate-400 font-black uppercase tracking-[0.2em] text-[10px]">Current Courses</h3>
+            <span className="p-4 bg-rose-50 text-rose-600 rounded-2xl shadow-inner group-hover:rotate-12 transition-transform"><BookOpen size={32} /></span>
           </div>
-          <div className="text-2xl font-bold text-white">{activeCourses} in progress</div>
+          <div className="text-2xl font-black text-slate-800 tracking-tight uppercase">{activeCourses} Active Modules</div>
         </div>
 
-        <div onClick={() => navigate('/jobs')} className="glass-panel p-6 border-t-4 border-t-emerald-500 cursor-pointer hover:-translate-y-1 hover:shadow-xl transition-all">
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-slate-400 font-medium">Jobs Pending</h3>
-            <span className="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg"><Target size={20} /></span>
+        <div onClick={() => navigate('/community')} className="glass-panel p-8 border-t-8 border-t-amber-400 cursor-pointer hover:-translate-y-4 hover:shadow-2xl hover:shadow-amber-100 transition-all bg-white border-white rounded-[2rem] shadow-xl shadow-slate-100/50 group">
+          <div className="flex justify-between items-start mb-8">
+            <h3 className="text-slate-400 font-black uppercase tracking-[0.2em] text-[10px]">Community</h3>
+            <span className="p-4 bg-amber-50 text-amber-600 rounded-2xl shadow-inner group-hover:-rotate-12 transition-transform"><Target size={32} /></span>
           </div>
-          <div className="text-2xl font-bold text-white">{jobsPending} pending</div>
+          <div className="text-2xl font-black text-slate-800 tracking-tight uppercase">Join Discussions</div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-4">
-        <div className="lg:col-span-2 glass-panel p-6">
-          <h2 className="text-xl font-bold text-white mb-6">Learning Process</h2>
-          <div className="flex flex-col justify-center h-64 border border-slate-700/50 rounded-xl bg-slate-800/30 p-8 space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pt-4">
+        <div className="lg:col-span-2 glass-panel p-12 bg-white border-white shadow-2xl shadow-purple-50 rounded-[3rem]">
+          <h2 className="text-3xl font-black text-slate-800 mb-10 uppercase tracking-tight italic underline decoration-violet-50 underline-offset-8 decoration-8">Learning Progress</h2>
+          <div className="flex flex-col justify-center h-80 border-8 border-slate-50 rounded-[3rem] bg-white p-12 space-y-8 shadow-inner">
             <div className="flex justify-between items-end mb-2">
-              <span className="text-sm font-semibold text-slate-300">Overall Progress</span>
-              <span className="text-sm font-bold text-indigo-400">{learningProgress}%</span>
+              <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.4em]">Overall Completion Percentage</span>
+              <span className="text-3xl font-black text-violet-600 tracking-tighter">{learningProgress}%</span>
             </div>
-            <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-1000" style={{ width: `${learningProgress}%` }}></div>
+            <div className="w-full h-6 bg-slate-50 rounded-full overflow-hidden border-4 border-white shadow-sm">
+              <div className="h-full bg-gradient-to-r from-violet-500 via-rose-400 to-emerald-400 rounded-full transition-all duration-[2000ms]" style={{ width: `${learningProgress}%` }}></div>
             </div>
-            <p className="text-slate-500 text-center mt-6 text-sm">Keep up the momentum! You have completed {completedCoursesCount} module(s) out of {roadmap.length}.</p>
+            <p className="text-slate-500 text-center mt-10 text-xl font-medium leading-relaxed border-t-2 border-slate-50 pt-8">
+              "Great job! You have completed {completedCoursesCount} modules in your {selectedPath} roadmap."
+            </p>
           </div>
         </div>
-        <div className="glass-panel p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-white mb-6">Next Steps</h2>
-          <div className="space-y-4 flex-1">
+        <div className="glass-panel p-12 flex flex-col bg-white border-white shadow-2xl shadow-purple-50 rounded-[3rem]">
+          <h2 className="text-3xl font-black text-slate-800 mb-10 uppercase tracking-tight italic underline decoration-rose-50 underline-offset-8 decoration-8">What's Next?</h2>
+          <div className="space-y-8 flex-1">
             {inProgressCourse ? (
-              <div onClick={() => navigate('/learning')} className="p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-indigo-500/50 transition-colors cursor-pointer group">
-                <h4 className="font-medium text-indigo-400 mb-1 group-hover:text-indigo-300 transition-colors">Start {inProgressCourse.title}</h4>
-                <p className="text-sm text-slate-400 line-clamp-2">{inProgressCourse.description}</p>
+              <div onClick={() => navigate('/learning')} className="p-8 rounded-[2rem] bg-slate-50 border-4 border-white hover:border-violet-200 hover:bg-white transition-all cursor-pointer group shadow-xl shadow-slate-100/50">
+                <h4 className="font-black text-violet-600 mb-3 text-2xl group-hover:text-violet-500 transition-colors uppercase tracking-tighter italic">Resume {inProgressCourse.title}</h4>
+                <p className="text-lg text-slate-500 font-medium italic leading-relaxed line-clamp-3">{inProgressCourse.description}</p>
               </div>
             ) : (
-              <div onClick={() => navigate('/resume')} className="p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-emerald-500/50 transition-colors cursor-pointer group">
-                <h4 className="font-medium text-emerald-400 mb-1 group-hover:text-emerald-300 transition-colors">Generate AI Resume</h4>
-                <p className="text-sm text-slate-400">Your learning path is complete! Update your resume with your new skills.</p>
+              <div onClick={() => navigate('/resume')} className="p-8 rounded-[2rem] bg-slate-50 border-4 border-white hover:border-emerald-200 hover:bg-white transition-all cursor-pointer group shadow-xl shadow-slate-100/50">
+                <h4 className="font-black text-emerald-600 mb-3 text-2xl group-hover:text-emerald-500 transition-colors uppercase tracking-tighter italic">Update Your Resume</h4>
+                <p className="text-lg text-slate-500 font-medium italic leading-relaxed">Your roadmap is complete! Update your professional profile with your new skills.</p>
               </div>
             )}
-            <div onClick={() => navigate('/jobs')} className="p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-purple-500/50 transition-colors cursor-pointer group">
-              <h4 className="font-medium text-purple-400 mb-1 group-hover:text-purple-300 transition-colors">Apply for Jobs</h4>
-              <p className="text-sm text-slate-400">Let CoursePilot auto-apply to relevant positions for you.</p>
+            <div onClick={() => navigate('/jobs')} className="p-8 rounded-[2rem] bg-slate-50 border-4 border-white hover:border-rose-200 hover:bg-white transition-all cursor-pointer group shadow-xl shadow-slate-100/50">
+              <h4 className="font-black text-rose-600 mb-3 text-2xl group-hover:text-rose-500 transition-colors uppercase tracking-tighter italic">Find Job Opportunities</h4>
+              <p className="text-lg text-slate-500 font-medium italic leading-relaxed">Apply for available positions that match your expertise and career goals.</p>
             </div>
           </div>
         </div>

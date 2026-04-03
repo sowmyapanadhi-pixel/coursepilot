@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { generateAIRoadmap } from '../utils/aiEngine';
 
 const fullStackRoadmapDefault = [
   {
@@ -125,8 +126,8 @@ export const AppProvider = ({ children }) => {
     name: 'Guest User',
     email: '',
     phone: '',
-    skills: ['JavaScript'],
-    interests: ['Web Development'],
+    skills: [],
+    interests: [],
     selectedCareer: 'Full Stack Developer',
     aboutInfo: '',
     assessmentScore: 0
@@ -192,10 +193,14 @@ export const AppProvider = ({ children }) => {
     }).catch(e => console.log("Sync failed:", e));
   }, [applications]);
 
-  const selectCareer = (careerTitle) => {
-    const newRoadmap = generateRoadmapFor(careerTitle);
+  const selectCareer = async (careerTitle) => {
     setUserData(prev => ({ ...prev, selectedCareer: careerTitle }));
-    setRoadmap(newRoadmap);
+    try {
+      const newRoadmap = await generateAIRoadmap(careerTitle, userData);
+      setRoadmap(newRoadmap);
+    } catch (err) {
+      console.log("Roadmap generation error:", err);
+    }
   };
 
   return (

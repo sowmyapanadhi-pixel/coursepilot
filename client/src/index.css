@@ -3,26 +3,40 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-dark text-slate-100 font-sans antialiased;
+  html, body {
+    background-color: #f8fafc !important;
+    @apply text-slate-800 font-sans antialiased;
   }
+  body {
+    background-image: radial-gradient(at 0% 0%, hsla(253, 16%, 95%, 1) 0, transparent 50%), 
+                      radial-gradient(at 50% 0%, hsla(225, 39%, 95%, 1) 0, transparent 50%), 
+                      radial-gradient(at 100% 0%, hsla(339, 49%, 95%, 1) 0, transparent 50%);
+  }
+}
+
+:root {
+  --pastel-lavender: #a78bfa;
+  --pastel-rose: #f472b6;
+  --pastel-mint: #6ee7b7;
+  --pastel-blue: #93c5fd;
+  --light-bg: #f8fafc;
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-slate-800/50 backdrop-blur-md border border-slate-700/50 rounded-2xl shadow-xl;
+    @apply bg-white border border-white shadow-2xl shadow-slate-100 rounded-3xl backdrop-blur-xl bg-opacity-80;
   }
   
   .btn-primary {
-    @apply bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 shadow-lg shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-gradient-to-r from-[#a78bfa] to-[#f472b6] hover:from-[#c084fc] hover:to-[#fb7185] text-white font-black px-8 py-4 rounded-2xl shadow-xl shadow-purple-100 transition-all active:scale-[0.98] border-b-4 border-black/10;
   }
   
   .btn-secondary {
-    @apply bg-slate-700 hover:bg-slate-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-slate-600 border-b-slate-800;
+    @apply bg-white border-2 border-slate-100 hover:border-[#a78bfa] hover:bg-slate-50 text-slate-700 font-bold px-6 py-3 rounded-2xl transition-all active:scale-[0.98];
   }
-  
+
   .input-field {
-    @apply bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-slate-400 block;
+    @apply w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-slate-800 font-bold focus:outline-none focus:border-[#a78bfa] focus:ring-4 focus:ring-purple-100 transition-all placeholder:text-slate-400;
   }
 }
 
@@ -32,12 +46,12 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #94a3b8;
 }

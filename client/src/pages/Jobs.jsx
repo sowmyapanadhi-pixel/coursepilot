@@ -14,108 +14,108 @@ const Jobs = () => {
     <div className="max-w-7xl mx-auto animate-in fade-in duration-700">
       
       {/* Header Stats */}
-      <div className="glass-panel p-8 mb-6 flex flex-col md:flex-row justify-between md:items-end gap-6">
+      <div className="glass-panel p-10 mb-8 flex flex-col md:flex-row justify-between md:items-end gap-8 border-white shadow-xl shadow-indigo-50 bg-white">
         <div>
-          <div className="flex justify-between items-center w-full">
-            <h1 className="text-3xl font-bold text-white mb-2">Job Applications</h1>
+          <div className="flex justify-between items-center w-full mb-2">
+            <h1 className="text-4xl font-black text-slate-800 tracking-tight">Job Applications</h1>
             <div className="md:hidden flex items-center gap-3">
-              <span className="text-sm font-bold text-slate-300">Auto Apply</span>
+              <span className="text-sm font-black text-slate-600 uppercase tracking-wider">Auto Apply</span>
               <button 
                 onClick={() => setAutoApply(!autoApply)} 
-                className={`w-12 h-6 rounded-full p-1 transition-colors ${autoApply ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                className={`w-14 h-7 rounded-full p-1.5 transition-all shadow-inner ${autoApply ? 'bg-indigo-500' : 'bg-slate-200'}`}
               >
-                <div className={`w-4 h-4 rounded-full bg-white transition-transform ${autoApply ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                <div className={`w-4 h-4 rounded-full bg-white transition-transform shadow-sm ${autoApply ? 'translate-x-7' : 'translate-x-0'}`}></div>
               </button>
             </div>
           </div>
-          <p className="text-slate-400">Track all your job applications in one place.</p>
+          <p className="text-slate-500 font-bold text-lg italic">Track all your job applications in one place with AI-driven distribution.</p>
         </div>
 
-        <div className="hidden md:flex items-center gap-3 bg-slate-900 border border-slate-700 p-2 rounded-xl">
-          <span className="text-sm font-bold text-slate-300 px-2">Auto Apply</span>
+        <div className="hidden md:flex items-center gap-4 bg-slate-50 border-2 border-slate-100 p-2.5 rounded-2xl shadow-inner">
+          <span className="text-xs font-black text-slate-600 px-3 uppercase tracking-widest">Auto Apply Distribution</span>
           <button 
             onClick={() => setAutoApply(!autoApply)} 
-            className={`w-12 h-6 rounded-full p-1 transition-colors ${autoApply ? 'bg-indigo-500' : 'bg-slate-700'}`}
+            className={`w-14 h-7 rounded-full p-1.5 transition-all shadow-inner ${autoApply ? 'bg-indigo-500' : 'bg-slate-200'}`}
           >
-            <div className={`w-4 h-4 rounded-full bg-white transition-transform ${autoApply ? 'translate-x-6' : 'translate-x-0'}`}></div>
+            <div className={`w-4 h-4 rounded-full bg-white transition-transform shadow-sm ${autoApply ? 'translate-x-7' : 'translate-x-0'}`}></div>
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="glass-panel p-6 border-b-4 border-b-green-500 flex justify-between items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+        <div className="glass-panel p-8 border-b-8 border-b-emerald-400 flex justify-between items-center bg-white shadow-lg shadow-emerald-50 border-white">
           <div>
-            <div className="flex items-center gap-2 text-green-400 font-medium mb-1"><CheckCircle size={16} /> Applied</div>
-            <div className="text-3xl font-bold text-white">{appliedCount}</div>
+            <div className="flex items-center gap-2 text-emerald-600 font-black mb-2 uppercase tracking-widest text-xs"><CheckCircle size={18} /> Applied</div>
+            <div className="text-4xl font-black text-slate-800">{appliedCount} <span className="text-lg text-slate-400 font-bold">Positions</span></div>
           </div>
         </div>
-        <div className="glass-panel p-6 border-b-4 border-b-yellow-500 flex justify-between items-center">
+        <div className="glass-panel p-8 border-b-8 border-b-amber-400 flex justify-between items-center bg-white shadow-lg shadow-amber-50 border-white">
           <div>
-            <div className="flex items-center gap-2 text-yellow-400 font-medium mb-1"><Clock size={16} /> Pending</div>
-            <div className="text-3xl font-bold text-white">{pendingCount}</div>
+            <div className="flex items-center gap-2 text-amber-600 font-black mb-2 uppercase tracking-widest text-xs"><Clock size={18} /> Pending</div>
+            <div className="text-4xl font-black text-slate-800">{pendingCount} <span className="text-lg text-slate-400 font-bold">Positions</span></div>
           </div>
         </div>
-        <div className="glass-panel p-6 border-b-4 border-b-red-500 flex justify-between items-center">
+        <div className="glass-panel p-8 border-b-8 border-b-rose-400 flex justify-between items-center bg-white shadow-lg shadow-rose-50 border-white">
           <div>
-            <div className="flex items-center gap-2 text-red-400 font-medium mb-1"><XCircle size={16} /> Rejected</div>
-            <div className="text-3xl font-bold text-white">{rejectedCount}</div>
+            <div className="flex items-center gap-2 text-rose-600 font-black mb-2 uppercase tracking-widest text-xs"><XCircle size={18} /> Rejected</div>
+            <div className="text-4xl font-black text-slate-800">{rejectedCount} <span className="text-lg text-slate-400 font-bold">Positions</span></div>
           </div>
         </div>
       </div>
 
       {/* Auto Apply Banner */}
-      <div className={`p-6 rounded-2xl mb-8 flex justify-between items-center transition-all ${autoApply ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/20' : 'bg-slate-800 text-slate-400 border border-slate-700'}`}>
-         <div>
-           <h2 className="text-xl font-bold flex items-center gap-2 mb-1">
-             <Zap size={20} />
-             {autoApply ? 'Auto Apply is Active' : 'Auto Apply is Paused'}
+      <div className={`p-8 rounded-3xl mb-10 flex flex-col md:flex-row justify-between items-center transition-all duration-500 shadow-2xl border-4 ${autoApply ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-white' : 'bg-white text-slate-500 border-slate-100 shadow-slate-100'}`}>
+         <div className="text-center md:text-left mb-6 md:mb-0">
+           <h2 className="text-2xl font-black flex items-center justify-center md:justify-start gap-3 mb-2 uppercase tracking-tight">
+             <Zap size={24} className={autoApply ? 'text-amber-300 animate-pulse' : 'text-slate-400'} />
+             {autoApply ? 'AI Auto-Distribution Active' : 'Auto-Distribution Paused'}
            </h2>
-           <p className={autoApply ? 'text-indigo-100' : 'text-slate-500'}>
-             {autoApply ? 'AI is automatically applying to jobs that match your profile (95%+ match).' : 'Enable to let AI handle your job posting distribution.'}
+           <p className={`text-lg font-bold ${autoApply ? 'text-indigo-100 italic' : 'text-slate-400'}`}>
+             {autoApply ? 'CoursePilot is automatically applying to high-match positions for you.' : 'Enable to let our AI handle your professional distribution.'}
            </p>
          </div>
          {autoApply && (
-           <div className="bg-white/20 px-6 py-3 rounded-xl text-center backdrop-blur-md border border-white/10">
-             <div className="text-3xl font-black">5</div>
-             <div className="text-xs uppercase tracking-wider font-bold opacity-80">Today</div>
+           <div className="bg-white/20 px-8 py-5 rounded-2xl text-center backdrop-blur-xl border-2 border-white/20 shadow-2xl scale-110">
+             <div className="text-5xl font-black mb-1">5</div>
+             <div className="text-[10px] uppercase tracking-widest font-black opacity-90">Applications Today</div>
            </div>
          )}
       </div>
 
       {/* Applications Table */}
-      <div className="glass-panel overflow-hidden">
+      <div className="glass-panel overflow-hidden border-white shadow-2xl shadow-indigo-50 bg-white rounded-3xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-900 border-b border-slate-800 text-xs uppercase tracking-wider font-bold text-slate-500">
-                <th className="p-4 w-64">Company</th>
-                <th className="p-4">Position</th>
-                <th className="p-4">Applied Date</th>
-                <th className="p-4">Status</th>
-                <th className="p-4 text-right">Actions</th>
+              <tr className="bg-slate-50 border-b-2 border-slate-100 text-[10px] uppercase tracking-[0.2em] font-black text-slate-500 italic">
+                <th className="p-6 w-64">Target Company</th>
+                <th className="p-6">Professional Position</th>
+                <th className="p-6">Application Date</th>
+                <th className="p-6">Current Status</th>
+                <th className="p-6 text-right">Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-slate-50">
               {applications.map((app) => (
-                <tr key={app.id} className="hover:bg-slate-800/30 transition-colors">
-                  <td className="p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-slate-800 rounded flex items-center justify-center shrink-0">
-                        🚀
+                <tr key={app.id} className="hover:bg-indigo-50/50 transition-all group cursor-default">
+                  <td className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-slate-50 group-hover:bg-white rounded-xl shadow-inner border border-slate-100 flex items-center justify-center shrink-0 transition-colors">
+                        <span className="text-xl group-hover:scale-110 transition-transform">🚀</span>
                       </div>
-                      <span className="font-bold text-slate-200">{app.company}</span>
+                      <span className="font-black text-slate-800 text-lg group-hover:text-indigo-600 transition-colors">{app.company}</span>
                     </div>
                   </td>
-                  <td className="p-4 text-slate-300 font-medium">{app.position}</td>
-                  <td className="p-4 text-slate-400">{app.date}</td>
-                  <td className="p-4">
-                    {app.status === 'applied' && <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-green-500/10 text-green-400 border border-green-500/20"><CheckCircle size={12} /> Applied</span>}
-                    {app.status === 'pending' && <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"><Clock size={12} /> Pending</span>}
-                    {app.status === 'rejected' && <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20"><XCircle size={12} /> Rejected</span>}
+                  <td className="p-6 text-slate-600 font-bold text-lg">{app.position}</td>
+                  <td className="p-6 text-slate-500 font-medium italic">{app.date}</td>
+                  <td className="p-6">
+                    {app.status === 'applied' && <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-emerald-50 text-emerald-600 border-2 border-emerald-100 uppercase tracking-wider"><CheckCircle size={14} /> Applied</span>}
+                    {app.status === 'pending' && <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-amber-50 text-amber-600 border-2 border-amber-100 uppercase tracking-wider"><Clock size={14} /> Pending</span>}
+                    {app.status === 'rejected' && <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-rose-50 text-rose-600 border-2 border-rose-100 uppercase tracking-wider"><XCircle size={14} /> Rejected</span>}
                   </td>
-                  <td className="p-4 text-right">
-                    <button className="text-indigo-400 hover:text-indigo-300 font-semibold text-sm transition-colors">
-                      View Details
+                  <td className="p-6 text-right">
+                    <button className="text-indigo-600 hover:text-indigo-500 font-black text-sm transition-colors uppercase tracking-widest border-b-2 border-indigo-100 hover:border-indigo-500 pb-0.5">
+                      View Pipeline
                     </button>
                   </td>
                 </tr>

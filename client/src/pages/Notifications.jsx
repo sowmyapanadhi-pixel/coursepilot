@@ -43,42 +43,42 @@ const Notifications = () => {
 
   return (
     <div className="max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-3">
-          <div className="p-3 bg-indigo-500/20 text-indigo-400 rounded-2xl">
-            <Bell size={24} />
+      <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center gap-4">
+          <div className="p-4 bg-indigo-50 text-indigo-600 rounded-3xl shadow-inner">
+            <Bell size={32} />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-white">Notifications</h1>
-            <p className="text-slate-400">Stay updated on your learning and career progress</p>
+            <h1 className="text-4xl font-black text-slate-800 tracking-tight">Notifications</h1>
+            <p className="text-slate-500 font-bold italic text-lg uppercase tracking-tight">Stay updated on your learning and career progress</p>
           </div>
         </div>
-        <button className="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
-          Mark all as read
+        <button className="text-xs font-black text-indigo-600 hover:text-indigo-500 transition-colors uppercase tracking-[0.2em] underline decoration-indigo-100 underline-offset-4">
+          Mark all read
         </button>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {notifications.map((notif) => (
           <div 
             key={notif.id}
-            className={`glass-panel p-6 flex gap-5 border-l-4 transition-all hover:bg-white/5 ${
-              notif.unread ? 'border-l-indigo-500 bg-indigo-500/5' : 'border-l-transparent text-slate-400'
+            className={`glass-panel p-8 flex gap-8 border-l-8 transition-all hover:scale-[1.01] bg-white border-white shadow-xl shadow-indigo-50 ${
+              notif.unread ? 'border-l-indigo-600 bg-gradient-to-r from-indigo-50/30 to-white' : 'border-l-slate-100 opacity-90'
             }`}
           >
-            <div className={`p-3 rounded-xl bg-slate-900/50 flex items-center justify-center h-fit`}>
+            <div className={`p-4 rounded-2xl bg-slate-50 flex items-center justify-center h-fit shadow-inner`}>
               {notif.icon}
             </div>
             <div className="flex-1">
-              <div className="flex justify-between items-start mb-1">
-                <h3 className={`font-bold text-lg ${notif.unread ? 'text-white' : 'text-slate-300'}`}>
+              <div className="flex justify-between items-start mb-3">
+                <h3 className={`font-black text-xl tracking-tight ${notif.unread ? 'text-slate-800' : 'text-slate-500'}`}>
                   {notif.title}
                 </h3>
-                <span className="text-xs font-medium text-slate-500 whitespace-nowrap mt-1">
+                <span className="text-xs font-black text-slate-400 whitespace-nowrap mt-2 uppercase tracking-widest italic">
                   {notif.time}
                 </span>
               </div>
-              <p className="text-slate-400 leading-relaxed">
+              <p className={`text-lg font-medium leading-relaxed ${notif.unread ? 'text-slate-600' : 'text-slate-400'}`}>
                 {notif.desc}
               </p>
             </div>
